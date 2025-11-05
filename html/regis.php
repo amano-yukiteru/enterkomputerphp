@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Komputer</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/regis.css">
     <link rel="icon" type="image/png" href="../foto/logo_tab.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 <body>
+    <?php
+        if(isset($_POST['bt_daftar'])){
+            include "konek.php";
+            $username = mysqli_real_escape_string($koneksi, $_POST['username']) ?? '';
+            $no_hp = mysqli_real_escape_string($koneksi, $_POST['no_hp']) ?? '';
+            $email = mysqli_real_escape_string($koneksi, $_POST['email']) ?? '';
+            $password = mysqli_real_escape_string($koneksi, $_POST['password']) ?? '';
+            $k_password = mysqli_real_escape_string($koneksi, $_POST['k_password']) ?? '';
+            if($password = $k_password){
+                $sql = "INSERT INTO akun (nama, no_hp, email, password) VALUES ('$username', '$no_hp', '$email', '$password')";
+                $query = mysqli_query($koneksi, $sql);
+                header('location: user.php');
+            }
+        }
+    ?>
 <!-- ========================== content ========================== -->
     <div class="content">
         <div class="nav">
@@ -34,7 +49,10 @@
                 <li><img src="../foto/computer.png" alt="lll" class="n4img1"></li>
                 <li><img src="../foto/human.png" alt="lll" class="n4img2"></li>
                 <li class="l1">
-                    <div class="login"><h1>Masuk</h1><h1>Daftar</h1></div>
+                    <div class="login"><h1>
+                        <a href="./login.php">Masuk</a></h1>
+                        <h1><a href="./regis.php">Daftar</a></h1>
+                    </div>
                 </li>
                 <li class="n4kosong"></li>
             </ul>
@@ -45,28 +63,28 @@
     <div class="pembungkus">
         <div class="nav2">
             <div class="batas">
-                <h2><a href="../html/home.html">Home</a> / Login</h2>
+                <h2><a href="../html/home.php">Home</a> / Register</h2>
             </div>
         </div>
         <div class="login_content">
             <div class="card_login">
                 <img src="../foto/ek_kecil.png" alt="lll" >
-                <h2>Masuk ke akun Enterkomputer anda</h2>
-                <input type="text" id="nama"  placeholder="Email address">
-                <div class="pw">
-                    <input type="text" id="nama" placeholder="Password">
-                    <button>Forgot?</button>
-                </div>
-            <div class="c">
-                <input type="checkbox">
-                <label for="ch">Remember me</label>
+                <h2>Buat akun Enterkomputer</h2>
+<!-- inputan  di bawah -->
+                <form action="" method="post">
+                    <input type="text"     name="username" id="nama"   placeholder="Nama Pengguna">
+                    <input type="number"   name="no_hp"id="nama"       placeholder="No Handphone">
+                    <input type="email"    name="email" id="nama"      placeholder="Email">
+                    <input type="password" name="password" id="nama"   placeholder="Password">
+                    <input type="password" name="k_password" id="nama" placeholder="Ulangi Password">
+                    <div class="button">
+                        <button name="bt_daftar">Daftar</button>
+                    </div>
+                </form>
+<!-- inputan  di atas -->
+                <h4>Sudah punya akun? <a href="../html/login.php">Masuk di sini</a></h4>
             </div>
-            <div class="button">
-                <button>Login</button>
-            </div>
-            <h4>belum punya akun? <a href="../html/regis.html">Daftar </a>atau <a href="#">Reset Password</a></h4>
         </div>
-    </div>
     </div>
 <!-- ================================ -->
         <div class="shuu"></div>
@@ -76,15 +94,15 @@
             <div class="grup_card">
                 <div class="container">
                     <div class="item">
-                        <h3>Tentang kami</h3>
+                            <h3>Tentang kami</h3>
                         <div class="testp">
-                        <p>Tentang kami</p>
+                            <p>Tentang kami</p>
                         </div>
                         <div class="testp">
-                        <p>Kebijakan Privasi</p>
+                            <p>Kebijakan Privasi</p>
                         </div>
                         <div class="testp">
-                        <p>Syarat ketentuan</p>
+                            <p>Syarat ketentuan</p>
                         </div>
                     </div>
                     <div class="item">

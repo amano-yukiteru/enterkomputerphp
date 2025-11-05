@@ -1,0 +1,21 @@
+<?php
+if(isset($_POST['bt_daftar'])){
+    include '../database/koneksi.php';
+    $nama       = $_POST['nama'];
+    $no_hp      = $_POST['no_hp'];
+    $email      = $_POST['email'];
+    $password   = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $k_password = $_POST['k_password'];
+    
+    if($password === $k_password){
+        $insert = mysqli_query($koneksi, "INSERT INTO users (nama, no_hp, email, password) VALUES ('$nama', '$no_hp', '$email', '$password')");
+        if($insert){
+            echo '<div class="alert_sukses">Pendaftaran Berhasil</div>';
+        } else {
+            echo '<div class="alert_gagal">Pendaftaran Gagal</div>';
+        }
+    } else {
+        echo '<div class="alert_gagal">Konfirmasi Password Tidak Sesuai</div>';
+    }
+}
+?>

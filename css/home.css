@@ -48,6 +48,14 @@ table {
 }
 
 /* =================== start ===================  */
+.content .login a{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #929292;
+}
+.content .login a:hover{
+    color: green;
+}
 .nca{
     display: inline-block;
     margin: 0;

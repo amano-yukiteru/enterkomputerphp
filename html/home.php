@@ -35,7 +35,10 @@
                 <li><img src="../foto/computer.png" alt="lll" class="n4img1"></li>
                 <li><img src="../foto/human.png" alt="lll" class="n4img2"></li>
                 <li class="l1">
-                    <div class="login"><h1><a href="../html/login.html">Masuk</a></h1><h1><a href="../html/regis.html">Daftar</a></h1></div>
+                    <div class="login"><h1>
+                        <a href="./login.php">Masuk</a></h1>
+                        <h1><a href="./regis.php">Daftar</a></h1>
+                    </div>
                 </li>
                 <li class="n4kosong"></li>
             </ul>

@@ -1,5 +1,7 @@
-CREATE DATA BASE enterkomputer;
-CREATE TABLE users (
+mysql -u root
+CREATE DATABASE enterkomputer;
+USE enterkomputer;
+CREATE TABLE akun (
     id INT AUTO_INCREMENT PRIMARY KEY,
     role enum('admin', 'user') DEFAULT 'user',
     nama VARCHAR(100) NOT NULL,
@@ -8,3 +10,4 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+SELECT*FROM akun;

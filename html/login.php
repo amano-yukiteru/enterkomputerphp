@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Komputer</title>
-    <link rel="stylesheet" href="../css/regis.css">
+    <link rel="stylesheet" href="../css/login.css">
     <link rel="icon" type="image/png" href="../foto/logo_tab.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 </head>
 <body>
+    <?php
+        include 'konek.php';
+        if(isset($_POST['login_bt'])){
+            include 'konek.php';
+            $nama = mysqli_real_escape_string($koneksi, $_POST['nama']) ?? '';
+            $password = mysqli_real_escape_string($koneksi, $_post['password']) ?? '' ;
+        }
+    ?>
 <!-- ========================== content ========================== -->
     <div class="content">
         <div class="nav">
@@ -34,7 +42,10 @@
                 <li><img src="../foto/computer.png" alt="lll" class="n4img1"></li>
                 <li><img src="../foto/human.png" alt="lll" class="n4img2"></li>
                 <li class="l1">
-                    <div class="login"><h1>Masuk</h1><h1>Daftar</h1></div>
+                    <div class="login"><h1>
+                        <a href="./login.php">Masuk</a></h1>
+                        <h1><a href="./regis.php">Daftar</a></h1>
+                    </div>
                 </li>
                 <li class="n4kosong"></li>
             </ul>
@@ -45,26 +56,28 @@
     <div class="pembungkus">
         <div class="nav2">
             <div class="batas">
-                <h2><a href="../html/home.html">Home</a> / Register</h2>
+                <h2><a href="../html/home.php">Home</a> / Login</h2>
             </div>
         </div>
         <div class="login_content">
             <div class="card_login">
-                <img src="../foto/ek_kecil.png" alt="lll" >
-                <h2>Buat akun Enterkomputer</h2>
-                <!-- inputan  di bawah -->
                 <form action="" method="post">
-                    <input type="text"      name="nama" id="nama"  placeholder="Nama Pengguna">
-                    <input type="number"    name="no_hp"id=" nama"  placeholder="No Handphone">
-                    <input type="email"     name="email" id="nama"  placeholder="Email">
-                    <input type="password"  name="password" id="nama"  placeholder="Password">
-                    <input type="password"  name="k_password" id="nama"  placeholder="Ulangi Password">
-                    <div class="button">
-                        <button name="bt_daftar">Daftar</button>
+                    <img src="../foto/ek_kecil.png" alt="lll" >
+                    <h2>Masuk ke akun Enterkomputer anda</h2>
+                    <input type="text"  nama="nama" id="nama"  placeholder="Email address" require>
+                    <div class="pw">
+                        <input type="text" name="password" id="nama" placeholder="Password" require>
+                        <button>Forgot?</button>
                     </div>
+                    <div class="c">
+                        <input type="checkbox">
+                        <label for="ch">Remember me</label>
+                    </div>
+                    <div class="button">
+                        <button name="login_bt">Login</button>
+                    </div>
+                    <h4>belum punya akun? <a href="../html/regis.php">Daftar </a>atau <a href="#">Reset Password</a></h4>
                 </form>
-                <!-- inputan  di atas -->
-                <h4>Sudah punya akun? <a href="../html/login.html">Masuk di sini</a></h4>
             </div>
         </div>
     </div>
